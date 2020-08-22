@@ -72,6 +72,16 @@ int Search(const IntQueue* q, int x) {
 	return -1;
 }
 
+int Search2(const IntQueue* q, int x) {
+	int i;
+	for (i = 0; i < q->num; i++) {
+		if (q->que[i] == x) {
+			return i - q->front;
+		}
+	}
+	return -1;
+}
+
 void Print(const IntQueue* q) {
 	int i;
 	for (i = 0; i < q->num; i++) {

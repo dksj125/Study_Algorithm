@@ -30,6 +30,8 @@ int IsFull(const IntQueue* q);
 
 int Search(const IntQueue* q, int x);
 
+int Search2(const IntQueue* q, int x);
+
 void Print(const IntQueue* q);
 
 void Terminate(IntQueue* q);
