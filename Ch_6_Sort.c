@@ -222,3 +222,123 @@ int main(void) {
 }
 */
 
+/*Shell Sort*/
+// practice 6-6
+/*
+#include<stdio.h>
+#include<stdlib.h>
+
+void shell(int a[], int n) {
+	int i, j, h;
+	int cnt = 0;
+	for(h = n / 2 ; h > 0 ; h /= 2)
+		for (i = h; i < n; i++) {
+			int tmp = a[i];
+			for (j = i - h; j >= 0 && a[j] > tmp; j -= h) {
+				a[j + h] = a[j];
+				cnt++;
+			}
+			a[j + h] = tmp;
+		}
+	printf("%d회 교환했습니다.\n", cnt);
+}
+
+int main() {
+	int i, nx;
+	int* x;
+	puts("셸 정렬");
+	printf("요소 갯수 : ");
+	scanf("%d", &nx);
+	x = calloc(nx, sizeof(int));
+	for (i = 0; i < nx; i++) {
+		printf("x[%d] : ", i);
+		scanf("%d", &x[i]);
+	}
+
+	shell(x, nx);
+	puts("오름차순으로 정렬했습니다.");
+	for (i = 0; i < nx; i++)
+		printf("x[%d] = %d\n", i, x[i]);
+	free(x);
+
+	return 0;
+
+}
+*/
+
+//practice 6-7
+/*
+#include<stdio.h>
+#include<stdlib.h>
+
+void shell(int a[], int n) {
+	int i, j, h;
+	int cnt = 0;
+	for (h = 1; h < n / 9; h = h * 3 + 1)
+		;
+	for(; h > 0 ; h /= 3)
+		for (i = h; i < n; i++) {
+			int tmp = a[i];
+			for (j = i - h; j >= 0 && a[j] > tmp; j -= h) {
+				a[j + h] = a[j];
+				cnt++;
+			}
+			a[j + h] = tmp;
+		}
+}
+
+
+int main() {
+
+	int i, nx;
+	int* x;
+
+	puts("셀 정렬");
+	printf("요소 개수 : ");
+	scanf("%d", &nx);
+	x = calloc(nx, sizeof(int));
+
+	for (i = 0; i < nx; i++) {
+		printf("x[%d] : ", i);
+		scanf("%d", &x[i]);
+	}
+
+	shell(x, nx);
+
+	puts("오름차순으로 정렬했습니다.");
+	for (i = 0; i < nx; i++) {
+		printf("x[%d] = %d\n", i, x[i]);
+	}
+	free(x);
+
+	return 0;
+}
+*/
+
+// Example Shell Algorithm
+
+#include<stdio.h>
+void shell(int a[], int n) {
+	int i, j, h;
+
+	for (h = n / 2; h > 0; h /= 2)
+		for (i = h; i < n; i++) {
+			int tmp = a[i];
+			for (j = i - h; j >= 0 && a[j] > tmp; j -= h)
+				a[j + h] = a[j];
+			a[j + h] = tmp;
+		}
+}
+
+int main() {
+
+	int a[] = { 10,8,6,20,4,3,22,1,0,15,16 };
+
+	shell(a, sizeof(a)/sizeof(int));
+
+	for (int i = 0; i < sizeof(a) / sizeof(int); i++) {
+		printf("%d\n", a[i]);
+	}
+
+	return 0;
+}
